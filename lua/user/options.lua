@@ -36,8 +36,9 @@ vim.opt.mousescroll = "ver:10"
 vim.opt.mousemodel = "popup"
 vim.opt.spell = true
 vim.cmd("set shortmess=a")
+vim.opt.mousemoveevent = true
 -- vim.opt.showcmd = true
--- vim.cmd "set laststatus=3"
+-- vim.cmd("set laststatus=2")
 -- vim.opt.startofline = true
 
 -- vim.opt.autochdir = true;

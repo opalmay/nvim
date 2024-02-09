@@ -1,6 +1,22 @@
 return {
 	"nvim-lua/plenary.nvim",
 	{
+		"vigoux/notifier.nvim",
+		config = function()
+			require("notifier").setup()
+		end,
+	},
+	{
+		"jghauser/mkdir.nvim",
+		event = "BufWritePre",
+	},
+	{
+		"stevearc/stickybuf.nvim",
+		config = function()
+			require("stickybuf").setup()
+		end,
+	},
+	{
 		"ThePrimeagen/harpoon",
 		config = function()
 			vim.api.nvim_set_keymap(
