@@ -16,6 +16,36 @@ return {
 			require("stickybuf").setup()
 		end,
 	},
+	{ -- FIXME
+		"opalmay/vim-EnhancedJumps",
+		event = "BufReadPost",
+		config = function()
+			vim.g.EnhancedJumps_no_mappings = 1
+			vim.g.EnhancedJumps_CaptureJumpMessages = 0
+			vim.g.EnhancedJumps_SwitchStrategy = "first"
+			vim.keymap.set("n", "<C-o>", "<Plug>EnhancedJumpsLocalOlder")
+			vim.keymap.set("n", "<C-i>", "<Plug>EnhancedJumpsLocalNewer")
+			vim.keymap.set("n", "g<C-o>", "<Plug>EnhancedJumpsRemoteOlder")
+			vim.keymap.set("n", "g<C-i>", "<Plug>EnhancedJumpsRemoteNewer")
+		end,
+		dependencies = {
+			"inkarkat/vim-ingo-library",
+		},
+	},
+	{
+		"klen/nvim-config-local",
+		config = function()
+			require("config-local").setup()
+		end,
+	},
+	{
+		"MTDL9/vim-log-highlighting",
+		ft = "log",
+	},
+	{
+		"mbbill/undotree",
+		cmd = "UndotreeToggle",
+	},
 	{
 		"ThePrimeagen/harpoon",
 		config = function()
