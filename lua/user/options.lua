@@ -37,6 +37,7 @@ vim.opt.mousemodel = "popup"
 vim.opt.spell = true
 vim.cmd("set shortmess=a")
 vim.opt.mousemoveevent = true
+vim.opt.pumheight = 10
 -- vim.opt.showcmd = true
 -- vim.cmd("set laststatus=2")
 -- vim.opt.startofline = true
