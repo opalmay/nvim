@@ -2,9 +2,7 @@ return {
 	"nvim-lua/plenary.nvim",
 	{
 		"vigoux/notifier.nvim",
-		config = function()
-			require("notifier").setup()
-		end,
+		config = true,
 	},
 	{
 		"jghauser/mkdir.nvim",
@@ -12,9 +10,7 @@ return {
 	},
 	{
 		"stevearc/stickybuf.nvim",
-		config = function()
-			require("stickybuf").setup()
-		end,
+		config = true,
 	},
 	{ -- FIXME
 		"opalmay/vim-EnhancedJumps",
@@ -34,9 +30,7 @@ return {
 	},
 	{
 		"klen/nvim-config-local",
-		config = function()
-			require("config-local").setup()
-		end,
+		config = true,
 	},
 	{
 		"MTDL9/vim-log-highlighting",
@@ -49,37 +43,12 @@ return {
 	{
 		"ThePrimeagen/harpoon",
 		config = function()
-			vim.api.nvim_set_keymap(
-				"n",
-				"<C-e>",
-				":lua require('harpoon.ui').toggle_quick_menu()<CR>",
-				{ noremap = true, silent = true }
-			)
-
-			vim.api.nvim_set_keymap(
-				"n",
-				"<C-j>",
-				":lua require('harpoon.ui').nav_file(1)<CR>",
-				{ noremap = true, silent = true }
-			)
-			vim.api.nvim_set_keymap(
-				"n",
-				"<C-k>",
-				":lua require('harpoon.ui').nav_file(2)<CR>",
-				{ noremap = true, silent = true }
-			)
-			vim.api.nvim_set_keymap(
-				"n",
-				"<C-l>",
-				":lua require('harpoon.ui').nav_file(3)<CR>",
-				{ noremap = true, silent = true }
-			)
-			vim.api.nvim_set_keymap(
-				"n",
-				"<C-;>",
-				":lua require('harpoon.ui').nav_file(4)<CR>",
-				{ noremap = true, silent = true }
-			)
+			vim.keymap.set("n", "<leader>a", "<CMD>lua require('harpoon.mark').add_file()<CR>")
+			vim.keymap.set("n", "<C-e>", "<CMD>lua require('harpoon.ui').toggle_quick_menu()<CR>")
+			vim.keymap.set("n", "<C-j>", "<CMD>lua require('harpoon.ui').nav_file(1)<CR>")
+			vim.keymap.set("n", "<C-k>", "<CMD>lua require('harpoon.ui').nav_file(2)<CR>")
+			vim.keymap.set("n", "<C-l>", "<CMD>lua require('harpoon.ui').nav_file(3)<CR>")
+			vim.keymap.set("n", "<C-;>", "<CMD>lua require('harpoon.ui').nav_file(4)<CR>")
 		end,
 	},
 }

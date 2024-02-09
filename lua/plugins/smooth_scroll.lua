@@ -8,7 +8,8 @@ return {
 		config = function()
 			if vim.g.neovide then
 				vim.g.smoothie_remapped_commands =
-					{ "zz", "H", "M", "L", "{", "}", "j", "k", "<ScrollWheelDown>", "<ScrollWheelUp>", "#", "*" }
+					{ "zz", "H", "M", "L", "{", "}", "<ScrollWheelDown>", "<ScrollWheelUp>", "#", "*" }
+				-- { "zz", "H", "M", "L", "{", "}", "j", "k", "<ScrollWheelDown>", "<ScrollWheelUp>", "#", "*" }
 			else
 				vim.g.smoothie_remapped_commands = {
 					"zz",

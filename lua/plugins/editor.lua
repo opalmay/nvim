@@ -1,26 +1,22 @@
 return {
 	{
 		"nguyenvukhang/nvim-toggler",
-		config = function()
-			require("nvim-toggler").setup({
-				inverses = {
-					["True"] = "False",
-					["or"] = "and",
-					["yes"] = "no",
-					["on"] = "off",
-					["eq"] = "ne",
-					["gt"] = "lt",
-					["ge"] = "le",
-				},
-			})
-		end,
+		opts = {
+			inverses = {
+				["True"] = "False",
+				["or"] = "and",
+				["yes"] = "no",
+				["on"] = "off",
+				["eq"] = "ne",
+				["gt"] = "lt",
+				["ge"] = "le",
+			},
+		},
 		event = "VeryLazy",
 	},
 	{
 		"kylechui/nvim-surround",
-		config = function()
-			require("nvim-surround").setup()
-		end,
+		config = true,
 		keys = { "ys", "cs", "ds" },
 		event = "VeryLazy",
 	},
@@ -60,17 +56,13 @@ return {
 	},
 	{
 		"gbprod/stay-in-place.nvim",
-		config = function()
-			require("stay-in-place").setup()
-		end,
+		config = true,
 		event = "VeryLazy",
 	},
 	{
 		"folke/todo-comments.nvim",
 		dependencies = "nvim-lua/plenary.nvim",
-		config = function()
-			require("todo-comments").setup()
-		end,
+		config = true,
 		event = "VeryLazy",
 	},
 	{
@@ -79,16 +71,12 @@ return {
 	},
 	{
 		"axieax/typo.nvim",
-		config = function()
-			require("typo").setup()
-		end,
+		config = true,
 	},
 	{
 		-- https://github.com/andrewferrier/debugprint.nvim
 		"andrewferrier/debugprint.nvim",
-		config = function()
-			require("debugprint").setup()
-		end,
+		config = true,
 		keys = "g?",
 	},
 }
