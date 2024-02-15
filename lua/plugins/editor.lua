@@ -22,23 +22,48 @@ return {
 	},
 	{
 		"gbprod/yanky.nvim",
-		event = "User FileOpened",
-		config = function()
-			require("yanky").setup({
-				highlight = {
-					on_put = false,
-					on_yank = false,
-					timer = 40,
-				},
-			})
-			vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)") -- Add indent?
-			vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
-			vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
-			vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
-			vim.keymap.set("n", "<c-p>", "<Plug>(YankyCycleBackward)")
-			vim.keymap.set("n", "<c-n>", "<Plug>(YankyCycleForward)")
-			vim.keymap.set({ "n", "x" }, "y", "<Plug>(YankyYank)") -- Stay in place
-		end,
+		opts = {
+			highlight = {
+				on_put = false,
+				on_yank = false,
+				timer = 40,
+			},
+		},
+		keys = {
+			{ -- Add indent?
+				"p",
+				"<Plug>(YankyPutAfter)",
+				mode = { "n", "x" },
+			},
+			{
+				"P",
+				"<Plug>(YankyPutBefore)",
+				mode = { "n", "x" },
+			},
+			{
+				"gp",
+				"<Plug>(YankyGPutAfter)",
+				mode = { "n", "x" },
+			},
+			{
+				"gP",
+				"<Plug>(YankyGPutBefore)",
+				mode = { "n", "x" },
+			},
+			{
+				"<c-p>",
+				"<Plug>(YankyCycleBackward)",
+			},
+			{
+				"<c-n>",
+				"<Plug>(YankyCycleForward)",
+			},
+			{ -- Stay in place
+				"y",
+				"<Plug>(YankyYank)",
+				mode = { "n", "x" },
+			},
+		},
 	},
 	{
 		"gbprod/substitute.nvim",
@@ -47,12 +72,34 @@ return {
 				yank_substituted_text = true,
 				on_substitute = require("yanky.integration").substitute(),
 			})
-			vim.keymap.set("n", "s", "<cmd>lua require('substitute').operator()<cr>")
-			vim.keymap.set("n", "ss", "<cmd>lua require('substitute').line()<cr>")
-			vim.keymap.set("n", "S", "<cmd>lua require('substitute').eol()<cr>")
-			vim.keymap.set("x", "s", "<cmd>lua require('substitute').visual()<cr>")
 		end,
-		lazy = true,
+		keys = {
+			{
+				"s",
+				function()
+					require("substitute").operator()
+				end,
+			},
+			{
+				"ss",
+				function()
+					require("substitute").line()
+				end,
+			},
+			{
+				"S",
+				function()
+					require("substitute").eol()
+				end,
+			},
+			{
+				"s",
+				function()
+					require("substitute").visual()
+				end,
+				mode = "x",
+			},
+		},
 	},
 	{
 		"gbprod/stay-in-place.nvim",

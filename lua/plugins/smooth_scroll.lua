@@ -1,10 +1,12 @@
 return {
 	{
 		"opalmay/vim-smoothie",
+		cond = not vim.g.neovide,
 	},
 	{
 		"opalmay/neoscroll.nvim",
 		branch = "feat-scroll-past-bottom",
+		cond = not vim.g.neovide,
 		config = function()
 			if vim.g.neovide then
 				vim.g.smoothie_remapped_commands =
