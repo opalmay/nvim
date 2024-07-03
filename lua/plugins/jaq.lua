@@ -1,5 +1,6 @@
 return {
 	"is0n/jaq-nvim",
+	cond = not vim.g.vscode,
 	opts = {
 		-- Commands used with 'Jaq'
 		cmds = {
@@ -15,10 +16,11 @@ return {
 				python = "python3 %",
 				-- rust = "rustc % && ./$fileBase && rm $fileBase",
 				rust = "cargo run",
-				cpp = "g++ % -o $fileBase && ./$fileBase",
+				cpp = "g++ % -o $fileBase && $fileBase",
 				go = "go run %",
 				sh = "sh %",
 				ps1 = "pwsh.exe -ExecutionPolicy Bypass -File %",
+				c = "C:\\ProgramData\\scoop\\apps\\gcc\\current\\bin\\gcc.exe % -o $fileBase && $fileBase",
 			},
 
 			-- Uses internal commands such as 'source' and 'luafile'
@@ -76,4 +78,7 @@ return {
 		},
 	},
 	cmd = "Jaq",
+	keys = {
+		{ "<M-e>", "<CMD>Jaq<CR>" },
+	},
 }

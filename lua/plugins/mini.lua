@@ -1,4 +1,7 @@
 return {
-	{ 'echasnovski/mini.ai',      config = true },
-	{ 'echasnovski/mini.comment', config = true }
+	{
+		'echasnovski/mini.ai',
+		opts = {}
+	},
+	-- { 'echasnovski/mini.comment', config = true }
 }

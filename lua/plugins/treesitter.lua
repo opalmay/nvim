@@ -1,6 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		cond = not vim.g.vscode,
 		build = ":TSUpdate",
 		main = "nvim-treesitter.configs",
 		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
@@ -48,14 +49,10 @@ return {
 			incremental_selection = {
 				enable = true,
 				keymaps = {
-					--	init_selection = "<C-space>",
-					--	node_incremental = "<C-space>",
-					--	scope_incremental = false,
-					--	node_decremental = "<bs>",
-					init_selection = "gnn", -- set to `false` to disable one of the mappings
-					node_incremental = "grn",
-					scope_incremental = "grc",
-					node_decremental = "grm",
+					init_selection = "<C-space>",
+					node_incremental = "<C-space>",
+					scope_incremental = false,
+					node_decremental = "<bs>",
 				},
 			},
 			matchup = { -- andymass/vim-matchup
@@ -73,15 +70,17 @@ return {
 		dependencies = {
 			"andymass/vim-matchup",
 			-- "JoosepAlviste/nvim-ts-context-commentstring",
+			"nvim-treesitter/nvim-treesitter-textobjects",
 		},
 	},
 	-- Automatically add closing tags for HTML and JSX
-	"windwp/nvim-ts-autotag",
+	{ "windwp/nvim-ts-autotag", ft = { "html", "javascript", "typescript", "javascriptreact", "typescriptreact" } },
 	{
 		"windwp/nvim-autopairs",
 		opts = {
-			enable_check_bracket_line = false,
+			enable_check_bracket_line = true,
 			check_ts = true,
+			disable_in_macro = true,
 		}
 	},
 	--{

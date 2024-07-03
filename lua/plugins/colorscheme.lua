@@ -1,11 +1,13 @@
 return {
 	"catppuccin/nvim",
+	cond = not vim.g.vscode,
 	name = "catppuccin",
 	config = function()
 		local cp = require("catppuccin.palettes").get_palette() -- fetch colors from g:catppuccin_flavour palette
 		require("catppuccin").setup({
-			flavour = "macchiato", -- latte, frappe, macchiato, mocha
-			background = { -- :h background
+			flavour = "macchiato",                              -- latte, frappe, macchiato, mocha
+			term_colors = true,
+			background = {                                      -- :h background
 				light = "latte",
 				dark = "macchiato",
 			},
@@ -44,6 +46,8 @@ return {
 				hop = true,
 				mason = true,
 				leap = true,
+				cmp = true,
+				gitsigns = true,
 			},
 		})
 		vim.cmd("colorscheme catppuccin") -- change to nvim..

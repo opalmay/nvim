@@ -108,6 +108,7 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
+		cond = not vim.g.vscode,
 		dependencies = "nvim-lua/plenary.nvim",
 		config = true,
 		event = "VeryLazy",
@@ -118,6 +119,7 @@ return {
 	},
 	{
 		"axieax/typo.nvim",
+		cond = not vim.g.vscode,
 		config = true,
 	},
 	{
@@ -126,4 +128,126 @@ return {
 		config = true,
 		keys = "g?",
 	},
+	{
+		"smjonas/inc-rename.nvim",
+		cond = not vim.g.vscode,
+		opts = {},
+		event = "VeryLazy",
+	},
+	{
+		"roobert/search-replace.nvim",
+		config = true,
+		keys = {
+			{
+				"<leader>rs",
+				"<CMD>SearchReplaceSingleBufferSelections<CR>",
+			},
+			{
+				"<leader>ro",
+				"<CMD>SearchReplaceSingleBufferOpen<CR>",
+			},
+			{
+				"<leader>rw",
+				"<CMD>SearchReplaceSingleBufferCWord<CR>",
+			},
+			{
+				"<leader>rW",
+				"<CMD>SearchReplaceSingleBufferCWORD<CR>",
+			},
+			{
+				"<leader>re",
+				"<CMD>SearchReplaceSingleBufferCExpr<CR>",
+			},
+			{
+				"<leader>rf",
+				"<CMD>SearchReplaceSingleBufferCFile<CR>",
+			},
+			{
+				"<leader>rbs",
+				"<CMD>SearchReplaceMultiBufferSelections<CR>",
+			},
+			{
+				"<leader>rbo",
+				"<CMD>SearchReplaceMultiBufferOpen<CR>",
+			},
+			{
+				"<leader>rbw",
+				"<CMD>SearchReplaceMultiBufferCWord<CR>",
+			},
+			{
+				"<leader>rbW",
+				"<CMD>SearchReplaceMultiBufferCWORD<CR>",
+			},
+			{
+				"<leader>rbe",
+				"<CMD>SearchReplaceMultiBufferCExpr<CR>",
+			},
+			{
+				"<leader>rbf",
+				"<CMD>SearchReplaceMultiBufferCFile<CR>",
+			},
+			{
+				"<C-r>",
+				"<CMD>SearchReplaceSingleBufferVisualSelection<CR>",
+				mode = "v",
+			},
+			{
+				"<C-s>",
+				"<CMD>SearchReplaceWithinVisualSelection<CR>",
+				mode = "v",
+			},
+			{
+				"<C-b>",
+				"<CMD>SearchReplaceWithinVisualSelectionCWord<CR>",
+				mode = "v",
+			},
+		},
+	},
+	{
+		"folke/trouble.nvim",
+		cond = not vim.g.vscode,
+		opts = {},
+		cmd = "TroubleToggle",
+	},
+	{
+		"numToStr/Comment.nvim",
+		opts = {},
+		keys = {
+			{ "gc", mode = { "n", "v" } },
+			"gbc",
+			"gb",
+			"gcA",
+		},
+	},
+	-- {
+	-- 	"folke/flash.nvim",
+	-- 	event = "VeryLazy",
+	-- 	opts = {
+	-- 		modes = {
+	-- 			char = {
+	-- 				highlight = { backdrop = false },
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	-- stylua: ignore
+	-- 	keys = {
+	-- 		{ "~",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+	-- 		{ "`",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+	-- 		{ "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+	-- 		{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+	-- 		{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+	-- 	},
+	-- },
+	{
+		"theKnightsOfRohan/csvlens.nvim",
+		dependencies = {
+			"akinsho/toggleterm.nvim"
+		},
+		opts = {},
+		cmd = "Csvlens",
+	},
+	{
+		"ixru/nvim-markdown",
+		ft = "markdown",
+	}
 }

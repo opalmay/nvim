@@ -14,6 +14,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", { buffer = bufnr })
 		vim.keymap.set("n", "<C-LeftMouse>", "<LeftMouse><cmd>lua vim.lsp.buf.hover()<CR>", { buffer = bufnr })
 		vim.keymap.set("n", "<C-RightMouse>", "<LeftMouse><cmd>lua vim.diagnostic.open_float()<CR>", { buffer = bufnr })
+		-- vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = bufnr })
+		vim.keymap.set("n", "<leader>rn", ":IncRename ", { buffer = bufnr })
 
 		vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
 		vim.keymap.set("n", "<M-f>", "<cmd>Format<cr>", { buffer = bufnr })
@@ -27,9 +29,9 @@ local diagnostic_config = {
 	signs = {
 		values = {
 			{ name = "DiagnosticSignError", text = icons.diagnostics.Error },
-			{ name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-			{ name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
-			{ name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+			{ name = "DiagnosticSignWarn",  text = icons.diagnostics.Warning },
+			{ name = "DiagnosticSignHint",  text = icons.diagnostics.Hint },
+			{ name = "DiagnosticSignInfo",  text = icons.diagnostics.Information },
 		},
 	},
 	virtual_text = false,
@@ -51,9 +53,64 @@ for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or
 end
 
 return {
-	{ "folke/neodev.nvim", opts = {}, ft = "lua" },
+	-- { -- disgnostics float
+	-- 	"RaafatTurki/corn.nvim",
+	-- 	opts = {
+	-- 		border_style = "rounded",
+	-- 		icons = {
+	-- 			error = icons.diagnostics.Error,
+	-- 			warn = icons.diagnostics.Warning,
+	-- 			info = icons.diagnostics.Information,
+	-- 			hint = icons.diagnostics.Hint,
+	-- 		},
+	-- 	},
+	-- },
+	-- {
+	-- 	"TheLeoP/powershell.nvim",
+	-- 	-- "opalmay/powershell.nvim",
+	-- 	cond = vim.fn.has("linux") == 1,
+	-- 	opts = {
+	-- 		bundle_path = vim.fn.stdpath("data") .. "/mason/packages/powershell-editor-services",
+	-- 		shell = "pwsh",
+	-- 		settings = {
+	-- 			powershell = {
+	-- 				codeFormatting = {
+	-- 					openBraceOnSameLine = true,
+	-- 					whitespaceBetweenParameters = true,
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	ft = "ps1",
+	-- 	keys = {
+	-- 		{
+	-- 			"<leader>E",
+	-- 			function()
+	-- 				require("powershell").eval()
+	-- 			end,
+	-- 			mode = { "n", "v" },
+	-- 		},
+	-- 		{
+	-- 			"<leader>T",
+	-- 			function()
+	-- 				require("powershell").toggle_term()
+	-- 			end,
+	-- 		},
+	-- 	},
+	-- },
+	{
+		"soulis-1256/eagle.nvim",
+		opts = {},
+	},
+	{
+		"folke/neodev.nvim",
+		cond = not vim.g.vscode,
+		opts = {},
+		ft = "lua",
+	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		cond = not vim.g.vscode,
 		dependencies = {
 			"williamboman/mason.nvim",
 			"neovim/nvim-lspconfig",
@@ -63,7 +120,6 @@ return {
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					"lua_ls",
-					"pyright",
 					"powershell_es",
 					"yamlls",
 					"lemminx",
@@ -81,6 +137,22 @@ return {
 					-- ["rust_analyzer"] = function()
 					-- 	require("rust-tools").setup({})
 					-- end,
+					["ruff_lsp"] = function()
+						local lspconfig = require("lspconfig")
+						lspconfig.ruff_lsp.setup({
+							init_options = {
+								settings = {
+									-- Any extra CLI arguments for `ruff` go here.
+									format = {
+										args = {
+											"--line-length=150"
+										}
+									},
+									args = {},
+								},
+							},
+						})
+					end,
 					["lua_ls"] = function()
 						local lspconfig = require("lspconfig")
 						lspconfig.lua_ls.setup({
@@ -93,20 +165,38 @@ return {
 							},
 						})
 					end,
+					["powershell_es"] = function()
+						-- if vim.fn.has("linux") == 1 then
+						-- 	return
+						-- end
+						local lspconfig = require("lspconfig")
+						lspconfig.powershell_es.setup({
+							settings = {
+								powershell = {
+									codeFormatting = {
+										openBraceOnSameLine = true,
+										whitespaceBetweenParameters = true,
+									},
+								},
+							},
+						})
+					end,
+					["basedpyright"] = function()
+						local lspconfig = require("lspconfig")
+						lspconfig.basedpyright.setup({
+							settings = {
+								python = {
+									analysis = {
+										typeCheckingMode = "off",
+										useLibraryCodeForTypes = false,
+									},
+								},
+							},
+						})
+					end,
 				},
 				automatic_installation = true,
 			})
-
-			-- vim.lsp.start({
-			-- 	name = "pylance",
-			-- 	cmd = { "node", "/home/opal/winhome/scoop/apps/vscode/1.86.1/data/extensions/ms-python.vscode-pylance-2024.2.1/dist/server.bundle.js", "--stdio" },
-			-- 	filetypes = { "python" },
-			-- 	root_dir = vim.fs.dirname(vim.fs.find({'main.py', 'pyproject.toml'}, { upward = true })[1]),
-			-- })
-			-- After setting up mason-lspconfig you may set up servers via lspconfig
-			-- require("lspconfig").lua_ls.setup {}
-			-- require("lspconfig").rust_analyzer.setup {}
-			-- ...
 		end,
 	},
 }

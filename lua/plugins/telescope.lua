@@ -1,8 +1,14 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	cond = not vim.g.vscode,
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		{ "ahmedkhalf/project.nvim",     main = "project_nvim", opts = {}, dependencies = "telescope.nvim" },
+		-- {
+		-- 	"ahmedkhalf/project.nvim",
+		-- 	main = "project_nvim",
+		-- 	opts = {},
+		-- 	dependencies = "telescope.nvim"
+		-- },
 		{ "jvgrootveld/telescope-zoxide" },
 	},
 
@@ -11,15 +17,18 @@ return {
 		local actions = require("telescope.actions")
 		local telescope = require("telescope")
 		telescope.load_extension("zoxide")
-		telescope.load_extension("projects")
 		return {
 			extensions = {
 				zoxide = {
 					mappings = {
 						default = {
-							after_action = function(selection)
-								-- print("Update! to (" .. selection.z_score .. ") " .. selection.path)
-							end
+							-- action = function(selection)
+							-- 	vim.cmd.tcd(selection.path)
+							-- end,
+							-- after_action = function(selection)
+							-- 	vim.cmd.tcd(selection.path)
+							-- 	-- print("Update! to (" .. selection.z_score .. ") " .. selection.path)
+							-- end
 						},
 					},
 				},
