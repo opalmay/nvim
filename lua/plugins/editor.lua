@@ -249,5 +249,9 @@ return {
 	{
 		"ixru/nvim-markdown",
 		ft = "markdown",
+	},
+	{
+		"theRealCarneiro/hyprland-vim-syntax",
+		ft = "hypr"
 	}
 }

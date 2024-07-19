@@ -1,10 +1,10 @@
 return {
 	"nvim-lua/plenary.nvim",
-	{
-		"vigoux/notifier.nvim",
-		cond = not vim.g.vscode,
-		config = true,
-	},
+	-- {
+	-- 	"vigoux/notifier.nvim",
+	-- 	cond = not vim.g.vscode,
+	-- 	config = true,
+	-- },
 	{
 		"jghauser/mkdir.nvim",
 		cond = not vim.g.vscode,
@@ -76,6 +76,34 @@ return {
 			-- Your setup opts here
 		},
 	},
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("chatgpt").setup()
+		end,
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim", "folke/trouble.nvim", "nvim-telescope/telescope.nvim" }
+	},
+	-- {
+	-- 	"m4xshen/hardtime.nvim",
+	-- 	event = "VeryLazy",
+	-- 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+	-- 	opts = {
+	-- 		allow_different_key = true,
+	-- 	}
+	-- },
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typing
 	-- {
 	-- 	"lervag/vimtex",
 	-- 	-- tag = "v2.15", -- uncomment to pin to a specific release

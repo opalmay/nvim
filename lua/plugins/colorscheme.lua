@@ -17,23 +17,23 @@ return {
 			--   percentage = 0.15,
 			-- },
 			-- transparent_background = true,
-			custom_highlights = {
-				-- HarpoonWindow = { ctermbg = 238 },
-				-- HarpoonBorder = { fg = "#8AADF4" },
-				-- Comment = { fg = colors.rosewater },
-				-- TSConstBuiltin = { fg = colors.peach, style = {} },
-				-- TSConstant = { fg = colors.sky },
-				-- TSComment = { fg = colors.surface2, style = { "italic" } },
-				-- IndentBlanklineChar = { fg = colors.maroon }
-				-- WhichKeyFloat = { bg = colors.none },
-				-- NormalFloat = { bg = colors.none },
-				--
-				HlSearchNear = { fg = "#1e2030", bg = "#ed8796" },
-				HlSearchLensNear = { bg = cp.none },
-
-				WhichKeyFloat = { bg = "NONE" },
-				NormalFloat = { fg = cp.text, bg = "NONE" },
-			},
+			-- custom_highlights = {
+			-- 	-- HarpoonWindow = { ctermbg = 238 },
+			-- 	-- HarpoonBorder = { fg = "#8AADF4" },
+			-- 	-- Comment = { fg = colors.rosewater },
+			-- 	-- TSConstBuiltin = { fg = colors.peach, style = {} },
+			-- 	-- TSConstant = { fg = colors.sky },
+			-- 	-- TSComment = { fg = colors.surface2, style = { "italic" } },
+			-- 	-- IndentBlanklineChar = { fg = colors.maroon }
+			-- 	-- WhichKeyFloat = { bg = colors.none },
+			-- 	-- NormalFloat = { bg = colors.none },
+			-- 	--
+			-- 	HlSearchNear = { fg = "#1e2030", bg = "#ed8796" },
+			-- 	HlSearchLensNear = { bg = cp.none },
+			--
+			-- 	WhichKeyFloat = { bg = "NONE" },
+			-- 	NormalFloat = { fg = cp.text, bg = "NONE" },
+			-- },
 			integrations = {
 				bufferline = true,
 				illuminate = true,
@@ -42,12 +42,17 @@ return {
 				notify = true,
 				fidget = true,
 				telescope = true,
+				-- telescope = {
+				-- 	enabled = true,
+				-- 	style = "nvchad"
+				-- },
 				harpoon = true,
 				hop = true,
 				mason = true,
 				leap = true,
 				cmp = true,
 				gitsigns = true,
+				nvim_surround = true,
 			},
 		})
 		vim.cmd("colorscheme catppuccin") -- change to nvim..

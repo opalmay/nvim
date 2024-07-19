@@ -94,6 +94,7 @@ return {
 				{ name = "luasnip" },
 				{ name = "nvim_lua" },
 				{ name = "buffer" },
+				{ name = "lazydev", group_index = 0 }
 			},
 		}
 		cmp.setup(conf)
