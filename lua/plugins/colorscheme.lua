@@ -52,7 +52,7 @@ return {
 				leap = true,
 				cmp = true,
 				gitsigns = true,
-				nvim_surround = true,
+				-- nvim_surround = true,
 			},
 		})
 		vim.cmd("colorscheme catppuccin") -- change to nvim..

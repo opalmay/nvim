@@ -1,7 +1,7 @@
 return {
 	"jay-babu/mason-null-ls.nvim",
-	cond = not vim.g.vscode,
-	event = { "BufReadPre", "BufNewFile" },
+	-- cond = not vim.g.vscode,
+	-- event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"williamboman/mason.nvim",
 		"nvimtools/none-ls.nvim",
