@@ -75,7 +75,9 @@ return {
 					end,
 				},
 			},
-			file_ignore_patterns = {},
+			defaults = {
+				file_ignore_patterns = { ".git", "node_modules", "vendor" },
+			},
 			path_display = { "smart" },
 			winblend = 0,
 			border = {},

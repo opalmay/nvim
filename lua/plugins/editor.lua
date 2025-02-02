@@ -253,5 +253,19 @@ return {
 	{
 		"theRealCarneiro/hyprland-vim-syntax",
 		ft = "hypr"
-	}
+	},
+	{ -- peeks lines of the buffer in non-obtrusive way.
+		"nacro90/numb.nvim",
+		opts = {},
+		VeryLazy = true,
+	},
+	-- {
+	-- 	"sphamba/smear-cursor.nvim",
+	-- 	opts = {},
+	-- }
+	-- {
+	-- 	"smjonas/live-command.nvim",
+	-- 	opts = "",
+	-- 	VeryLazy = true,
+	-- }
 }

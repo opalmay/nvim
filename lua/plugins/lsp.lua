@@ -199,6 +199,17 @@ return {
 					-- ["rust_analyzer"] = function()
 					-- 	require("rust-tools").setup({})
 					-- end,
+					-- ["eslint"] = function()
+					-- 	local lspconfig = require("lspconfig")
+					-- 	lspconfig.eslint.setup({
+					-- 		init_options = {
+					-- 			settings = {
+					-- 				lintOnSave = true,
+					-- 				formatOnSave = true,
+					-- 			},
+					-- 		},
+					-- 	})
+					-- end,
 					["ruff_lsp"] = function()
 						local lspconfig = require("lspconfig")
 						lspconfig.ruff_lsp.setup({
