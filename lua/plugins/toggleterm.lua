@@ -32,8 +32,8 @@ return {
 		},
 		opts = {
 			autochdir = true,
-			-- shell = vim.o.shell,
-			shell = "tmux attach -t 'nvim' || tmux new -s 'nvim'",
+			shell = vim.o.shell,
+			-- shell = "tmux attach -t 'nvim' || tmux new -s 'nvim'",
 		},
 	},
 }

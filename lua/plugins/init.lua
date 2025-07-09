@@ -104,7 +104,8 @@ return {
     },
   },
   { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typing
-	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" }
+	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
+	{ "OXY2DEV/helpview.nvim", dependencies = "catppuccin/nvim" }
 	-- {
 	-- 	"lervag/vimtex",
 	-- 	-- tag = "v2.15", -- uncomment to pin to a specific release
