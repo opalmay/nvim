@@ -26,14 +26,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "*",
 	command = "set fo-=c fo-=r fo-=o",
 })
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = "github.com_*.txt",
-	command = "set filetype=markdown",
-})
-vim.api.nvim_create_autocmd("BufEnter", {
-	pattern = "solarwinds.nice.com_*.txt",
-	command = "set filetype=ps1",
-})
 -- On command line leave, clear the command line
 vim.api.nvim_create_autocmd("CmdlineLeave", {
 	pattern = ":",
