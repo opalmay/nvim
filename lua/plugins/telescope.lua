@@ -9,7 +9,8 @@ return {
 		-- 	opts = {},
 		-- 	dependencies = "telescope.nvim"
 		-- },
-		{ "jvgrootveld/telescope-zoxide" },
+		"nvim-telescope/telescope-fzf-native.nvim",
+		"jvgrootveld/telescope-zoxide",
 	},
 
 	config = true,
@@ -108,6 +109,12 @@ return {
 						end) then
 					require("telescope.builtin").find_files(opts)
 				end
+			end,
+		},
+		{
+			"zz",
+			function()
+				require("telescope.builtin").spell_suggest()
 			end,
 		},
 		{

@@ -2,6 +2,7 @@ return {
 	"catppuccin/nvim",
 	cond = not vim.g.vscode,
 	name = "catppuccin",
+	priority = 1000,
 	config = function()
 		local cp = require("catppuccin.palettes").get_palette() -- fetch colors from g:catppuccin_flavour palette
 		require("catppuccin").setup({
@@ -17,7 +18,7 @@ return {
 			--   percentage = 0.15,
 			-- },
 			-- transparent_background = true,
-			-- custom_highlights = {
+			custom_highlights = {
 			-- 	-- HarpoonWindow = { ctermbg = 238 },
 			-- 	-- HarpoonBorder = { fg = "#8AADF4" },
 			-- 	-- Comment = { fg = colors.rosewater },
@@ -32,8 +33,8 @@ return {
 			-- 	HlSearchLensNear = { bg = cp.none },
 			--
 			-- 	WhichKeyFloat = { bg = "NONE" },
-			-- 	NormalFloat = { fg = cp.text, bg = "NONE" },
-			-- },
+				NormalFloat = { fg = cp.text, bg = "NONE" },
+			},
 			integrations = {
 				bufferline = true,
 				illuminate = true,

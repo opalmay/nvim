@@ -42,6 +42,7 @@ vim.opt.laststatus = 3                          -- unified status bar
 vim.opt.mousescroll = "ver:10"
 vim.opt.mousemodel = "popup"
 vim.opt.spell = false
+vim.opt.spelllang = { "en_us", "de_de" } -- spell checking languages
 vim.opt.mousemoveevent = true
 vim.opt.pumheight = 10
 vim.opt.tabstop = 2
