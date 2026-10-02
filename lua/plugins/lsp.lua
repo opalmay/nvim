@@ -17,7 +17,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", { buffer = bufnr })
 		vim.keymap.set("n", "<leader>rn", ":IncRename ", { buffer = bufnr })
 
-		vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
+		-- vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format({ async = true })' ]])
+		vim.api.nvim_create_user_command("Format", function()
+			-- if vim.bo.filetype == "hyprlang" then
+			-- 	local view = vim.fn.winsaveview()
+			-- 	vim.cmd("silent! keepjumps %!hyprfmt")
+			-- 	vim.fn.winrestview(view)
+			-- else
+				vim.lsp.buf.format({ async = true })
+			-- end
+		end, {})
 		vim.keymap.set("n", "<M-f>", "<cmd>Format<cr>", { buffer = bufnr })
 		-- if client.server_capabilities.inlayHintProvider then
 		-- 	vim.lsp.buf.inlay_hint(bufnr, true)
@@ -69,6 +78,25 @@ vim.diagnostic.config(diagnostic_config)
 -- for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
 -- 	vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
 -- end
+
+-- Hyprlang LSP
+-- vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+-- 	pattern = { "*.hl", "hypr*.conf" },
+-- 	callback = function(event)
+-- 		-- print(string.format("starting hyprls for %s", vim.inspect(event)))
+-- 		vim.lsp.start {
+-- 			name = "hyprlang",
+-- 			cmd = { "hyprls" },
+-- 			root_dir = vim.fn.getcwd(),
+-- 			settings = {
+-- 				hyprls = {
+-- 					preferIgnoreFile = true, -- set to false to prefer `hyprls.ignore`
+-- 					ignore = { "hyprlock.conf", "hypridle.conf" }
+-- 				}
+-- 			}
+-- 		}
+-- 	end
+-- })
 
 return {
 	-- { -- disgnostics float
@@ -232,7 +260,7 @@ return {
 							settings = {
 								Lua = {
 									diagnostics = {
-										globals = { "vim", "icons" },
+										globals = { "vim", "icons", "hl" },
 									},
 								},
 							},

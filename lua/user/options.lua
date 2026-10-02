@@ -1,6 +1,6 @@
 vim.opt.ignorecase = true -- ignore case in search patterns
 vim.opt.hlsearch = true   -- highlight all matches on previous search pattern
-
+vim.api.nvim_set_hl(0, "@comment.red", { fg = "#ff0000" })
 -- if vim.g.vscode then
 if vim.fn.has("linux") == 1 then
 	vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
@@ -80,7 +80,6 @@ vim.cmd([[set iskeyword+=-]])
 --vim.api.nvim_exec("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif", false)
 -- vim.g.lf_replace_netrw = 1
 
-vim.g.gitblame_enabled = 0
 vim.g.suda_smart_edit = 1
 
 -- doesn't work idk :h disable-mouse
@@ -116,3 +115,7 @@ vim.g.suda_smart_edit = 1
 --         \   'cache_enabled': 1,
 --         \ }
 -- ]])
+
+-- vim.filetype.add({
+-- 	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+-- })

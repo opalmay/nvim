@@ -112,6 +112,17 @@ return {
 			end,
 		},
 		{
+			"<C-f>",
+			function()
+				local opts = { hidden = true, show_untracked = true }
+				if not pcall(function()
+							require("telescope.builtin").git_files(opts)
+						end) then
+					require("telescope.builtin").find_files(opts)
+				end
+			end,
+		},
+		{
 			"zz",
 			function()
 				require("telescope.builtin").spell_suggest()

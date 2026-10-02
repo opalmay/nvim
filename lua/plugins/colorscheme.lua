@@ -51,8 +51,8 @@ return {
 				hop = true,
 				mason = true,
 				leap = true,
-				cmp = true,
 				gitsigns = true,
+				blink = true,
 				-- nvim_surround = true,
 			},
 		})

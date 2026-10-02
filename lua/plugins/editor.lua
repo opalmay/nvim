@@ -209,16 +209,17 @@ return {
 		opts = {},
 		cmd = "TroubleToggle",
 	},
-	{
-		"numToStr/Comment.nvim",
-		opts = {},
-		keys = {
-			{ "gc", mode = { "n", "v" } },
-			"gbc",
-			"gb",
-			"gcA",
-		},
-	},
+	-- {
+	-- 	"numToStr/Comment.nvim",
+	-- 	opts = {},
+	-- 	keys = {
+	-- 		{ "gc", mode = { "n", "v" } },
+	-- 		"gbc",
+	-- 		"gb",
+	-- 		"gcA",
+	-- 	},
+	-- },
+
 	-- {
 	-- 	"folke/flash.nvim",
 	-- 	event = "VeryLazy",
@@ -246,10 +247,16 @@ return {
 		opts = {},
 		cmd = "Csvlens",
 	},
-	{
-		"ixru/nvim-markdown",
-		ft = "markdown",
-	},
+	-- {
+	-- 	"ixru/nvim-markdown",
+	-- 	ft = "markdown",
+	-- 	-- config = function()
+	-- 	-- 	vim.api.nvim_create_autocmd("FileType", {
+	-- 	-- 		pattern = "markdown",
+	-- 	-- 		callback = function() vim.bo.commentstring = "<!-- %s -->" end,
+	-- 	-- 	})
+	-- 	-- end
+	-- },
 	{
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -259,10 +266,10 @@ return {
 		end,
 		ft = { "markdown" },
 	},
-	{
-		"theRealCarneiro/hyprland-vim-syntax",
-		ft = "hypr"
-	},
+	-- {
+	-- 	"theRealCarneiro/hyprland-vim-syntax",
+	-- 	ft = "hypr"
+	-- },
 	{ -- peeks lines of the buffer in non-obtrusive way.
 		"nacro90/numb.nvim",
 		opts = {},
@@ -277,4 +284,29 @@ return {
 	-- 	opts = "",
 	-- 	VeryLazy = true,
 	-- }
+	-- Lua
+	{
+		"folke/zen-mode.nvim",
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+		}
+	},
+	{
+		"f-person/git-blame.nvim",
+		cmd = "GitBlameToggle",
+		opt = {
+			enabled = false
+		}
+	}
+	-- {
+	--    'MeanderingProgrammer/render-markdown.nvim',
+	--    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim' },            -- if you use the mini.nvim suite
+	--    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
+	--    -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+	--    ---@module 'render-markdown'
+	--    ---@type render.md.UserConfig
+	--    opts = {},
+	-- },
 }

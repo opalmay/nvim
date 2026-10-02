@@ -1,3 +1,16 @@
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+		vim.opt_local.textwidth = 80
+		vim.opt_local.formatoptions:append("t")
+
+    vim.opt_local.wrap = true          -- Wrap long lines
+    vim.opt_local.linebreak = true     -- Don't break words in half
+    vim.opt_local.spell = true         -- Enable spellcheck
+    vim.opt_local.conceallevel = 2     -- Hide the markup syntax
+  end,
+})
+
 -- Add last insert position to jump list
 vim.api.nvim_create_autocmd("InsertLeave", {
 	pattern = "*",
@@ -44,6 +57,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	command = "set nospell",
 })
 
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = { "*/applications/*.md" },
+	command = "hi @comment.html guifg=#ff0000",
+})
+
 -- -- Format on save
 -- vim.api.nvim_create_autocmd("BufWritePre", {
 -- 	callback = function()
@@ -54,14 +73,15 @@ vim.api.nvim_create_autocmd("BufEnter", {
 -- 	end,
 -- })
 
-if vim.fn.has("linux") == 1 then
-	-- sync with system clipboard on focus
-	vim.api.nvim_create_autocmd({ "FocusGained" }, {
-		pattern = { "*" },
-		command = [[call setreg("@", getreg("+"))]],
-	})
-	vim.api.nvim_create_autocmd({ "FocusLost" }, {
-		pattern = { "*" },
-		command = [[call setreg("+", getreg("@"))]],
-	})
-end
+-- if vim.fn.has("linux") == 1 then
+-- 	-- sync with system clipboard on focus
+-- 	vim.api.nvim_create_autocmd({ "FocusGained" }, {
+-- 		pattern = { "*" },
+-- 		command = [[call setreg("@", getreg("+"))]],
+-- 	})
+-- 	vim.api.nvim_create_autocmd({ "FocusLost" }, {
+-- 		pattern = { "*" },
+-- 		command = [[call setreg("+", getreg("@"))]],
+-- 	})
+-- end
+--
